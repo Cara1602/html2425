@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #050210;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+        .black-circle {
+            width: 400px;
+            height: 400px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+        .rotating-band {
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            animation: rotate 1s linear infinite; 
+            background: conic-gradient(#fb5dad 0%, #55fb9f 33%, #b97aff 66%, #fb5dad 100%);
+            filter: drop-shadow(0 0 30px rgba(251, 93, 172, 0.656)) drop-shadow(0 0 35px rgba(85, 251, 160, 0.659)) drop-shadow(0 0 40px rgba(184, 122, 255, 0.747));
+            z-index: 1;
+        }
+        .expanding-circle {
+            width: 0;
+            height: 0;
+            background-color: rgba(34, 31, 69, 0.5); 
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: expand 01s ease-out infinite; 
+            z-index: 2;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes expand {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 400px; 
+                height: 400px;
+                opacity: 0.5; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="black-circle"></div>
+        <div class="expanding-circle"></div>
+        <div class="rotating-band"></div>
+    </div>
+</body>
+</html>
